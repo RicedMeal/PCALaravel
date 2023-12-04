@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'layouts\app');
 
-Route::get('/create-projects', [ProjectController::class, 'create'])->name('create-projects');
+Route::get('/create-project', [ProjectController::class, 'create'])->name('create-project');
+Route::post('/create-project', [ProjectController::class, 'store'])->name('project.store'); 
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
