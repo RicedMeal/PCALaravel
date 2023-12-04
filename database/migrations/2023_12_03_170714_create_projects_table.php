@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('project_title');
             $table->string('department_office');
-            $table->text('project_description');
+            $table->string('project_description');
             $table->string('person_in_charge');
             $table->date('project_date');
             $table->json('document_inputs')->nullable();
