@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div x-show="open" class="ml-7">
-                        <a class="flex items-center px-4 py-3 transition cursor-pointer group hover:bg-gray-800 hover:text-gray-200" href="{{ route('create-project') }}">
+                        <a class="flex items-center px-4 py-3 transition cursor-pointer group hover:bg-gray-800 hover:text-gray-200 {{ request()->routeIs('create-project') ? 'bg-gray-800 text-white' : '' }}" href="{{ route('create-project') }}">
                             <span>Create Project</span>
                         </a>
                         <a class="flex items-center px-4 py-3 transition cursor-pointer group hover:bg-gray-800 hover:text-gray-200" href="#">

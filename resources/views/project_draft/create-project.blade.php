@@ -30,7 +30,7 @@
                     <textarea id="project_description" name="project_description" placeholder="Enter project project_description" class="w-full bg-white border border-gray-300 rounded-md py-2 px-4 resize-none focus:outline-none focus:border-blue-500"></textarea>
                     @if($errors->has('project_description'))
                         <p class="text-red-500 text-xs italic mt-1">{{ $errors->first('project_description') }}</p>
-                    @endif  
+                    @endif
                 </div>
 
                 <div class="w-full md:w-1/2 px-4 mb-3">
@@ -46,14 +46,21 @@
                     <input type="date" id="project_date" name="project_date" class="w-full mt-2 bg-white border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-500">
                     @if($errors->has('project_date'))
                         <p class="text-red-500 text-xs italic mt-1">{{ $errors->first('project_date') }}</p>
-                    @endif    
+                    @endif
                 </div>
-            </div>
-            <div class="flex justify-end">
-                <!-- Add a Next button to proceed to another page -->
-                <button type= "submit" class="ml-4 mt-20  bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:shadow-outline-green">Next</button>
             </div>
         </form>
     </div>
 </div>
+
+<div class="p-0 transition">
+    <div class="max-w-8xl"> <!-- Container for alignment -->
+        <form method="post" action="{{ route('project.store') }}" class="bg-gray-50 p-8 mt-5 rounded-md shadow-md">
+    </div>
+    <div class="flex justify-end">
+        <!-- Add a Next button to proceed to another page -->
+        <button type= "submit" class="ml-4 mt-5  bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:shadow-outline-green">Next</button>
+    </div>
+</div>
+
 @endsection
