@@ -8,6 +8,13 @@ use App\Models\Project;
 
 class ProjectController extends Controller
 {
+
+    public function index()
+    {
+        $projects = Project::with('documentInputs')->get();
+        return view('project_dra.index-project', compact('projects'));
+    }
+
     public function create()
     {
         return view('project_draft.create-project');
@@ -22,12 +29,22 @@ class ProjectController extends Controller
             'project_description' => 'required|string',
             'person_in_charge' => 'required|string|max:255',
             'project_date' => 'required|date',
+            'market_study_file' => 'file|mimes:pdf|max:10240',
         ]);
 
-        //saving data to the database
-        Project::create($validatedData);
+        // Save project data
+        $project = Project::create($validatedData);
 
-        //optional
-        //return redirect()->route('your.success.route');
+        // Handle file upload and save to DocumentInput
+        if ($request->hasFile('market_study_file')) {
+            $fileContent = file_get_contents($request->file('market_study_file')->getRealPath());
+
+            $project->documentInputs()->create([
+                'input_name' => 'market_study_file', // Adjust the input name as needed
+                'file_content' => $fileContent,
+            ]);
+        }
+
+        return redirect()->route('project_draft.index-project')->with('success', 'Project created successfully.');
     }
 }
