@@ -107,7 +107,7 @@
                                             class="w-full bg-white border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-500"
                                         >
                                         <span>or</span>
-
+                                        <a href="{{ route('project_draft.create-pr') }}" class="text-blue-500 underline">Create</a>
                                     </div>
                                 @else
                                     <input
