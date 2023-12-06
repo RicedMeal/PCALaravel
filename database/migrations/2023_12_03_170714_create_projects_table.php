@@ -12,13 +12,25 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->id();
+            $table->id('project_id');
             $table->string('project_title');
             $table->string('department_office');
             $table->string('project_description');
             $table->string('person_in_charge');
             $table->date('project_date');
-            $table->json('document_inputs')->nullable();
+            $table->string('purchase_request')->nullable();
+            $table->string('price_quotation')->nullable();
+            $table->string('abstract_of_canvass')->nullable();
+            $table->string('material_and_cost_estimates')->nullable();
+            $table->string('budget_utilization_request')->nullable();
+            $table->string('project_initiation_proposal')->nullable();
+            $table->string('annual_procurement_plan')->nullable();
+            $table->string('purchase_request_with_number')->nullable();
+            $table->string('market_study')->nullable();
+            $table->string('certificate_of_fund_allotment')->nullable();
+            $table->string('csw')->nullable();
+            $table->string('accomplishment_report')->nullable();
+            $table->string('project_status')->nullable();
             $table->timestamps();
         });
     }
