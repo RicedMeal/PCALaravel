@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Project; 
+use App\Models\Project;
 
 class ProjectController extends Controller
 {
@@ -12,7 +12,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::with('documentInputs')->get();
-        return view('project_dra.index-project', compact('projects'));
+        return view('project_draft.index-project', compact('projects'));
     }
 
     public function create()
