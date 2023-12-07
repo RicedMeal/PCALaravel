@@ -11,17 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('supplementary_documents', function (Blueprint $table) {
+        Schema::create('suppliers', function (Blueprint $table) {
             $table->unsignedBigInteger('project_id');
-            $table->string('project_title');
-            $table->string('department_office');
+            $table->string('project_description');
             $table->date('project_date');
-            $table->id('file_id'); 
-            $table->string('file_name')->nullable(); // valdiation for input name 
-            $table->string('file_content')->nullable(); 
+            $table->string('supplier_id')->unique();
+            $table->string('supplier_name')->index();
+            $table->string('address');
+            $table->string('tel_no');
+            $table->string('fax_no');
+            $table->string('website');
+            $table->string('contact_person');
+            $table->string('email');
             $table->timestamps();
             $table->foreign('project_id')->references('project_id')->on('projects')->onDelete('cascade');
-            $table->foreign('project_title')->references('project_title')->on('projects')->onDelete('cascade');
+            $table->foreign('project_description')->references('project_description')->on('projects')->onDelete('cascade');
             $table->foreign('project_date')->references('project_date')->on('projects')->onDelete('cascade');
         });
     }
@@ -31,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('supplementary_documents');
+        Schema::dropIfExists('suppliers');
     }
 };

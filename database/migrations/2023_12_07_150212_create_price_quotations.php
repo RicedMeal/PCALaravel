@@ -11,16 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('supplementary_documents', function (Blueprint $table) {
+        Schema::create('price_quotations', function (Blueprint $table) {
             $table->unsignedBigInteger('project_id');
             $table->string('project_title');
-            $table->string('department_office');
             $table->date('project_date');
-            $table->id('file_id'); 
-            $table->string('file_name')->nullable(); // valdiation for input name 
-            $table->string('file_content')->nullable(); 
+            $table->string('supplier_id');
+            $table->string('supplier_name');
+            $table->id('rfq_id');
+            $table->string('rfq_no');
+            $table->string('file_name');
+            $table->string('file_content'); 
             $table->timestamps();
             $table->foreign('project_id')->references('project_id')->on('projects')->onDelete('cascade');
+            $table->foreign('supplier_id')->references('supplier_id')->on('suppliers')->onDelete('cascade');
+            $table->foreign('supplier_name')->references('supplier_name')->on('suppliers')->onDelete('cascade');
             $table->foreign('project_title')->references('project_title')->on('projects')->onDelete('cascade');
             $table->foreign('project_date')->references('project_date')->on('projects')->onDelete('cascade');
         });
@@ -31,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('supplementary_documents');
+        Schema::dropIfExists('price_quotations');
     }
 };
